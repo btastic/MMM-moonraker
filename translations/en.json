@@ -1,0 +1,9 @@
+{
+  "STATUS": "Status",
+  "FILENAME": "Filename",
+  "PROGRESS": "Progress",
+  "EXTRUDER": "Extruder",
+  "BED": "Bed",
+  "LAYER": "Layer",
+  "MOONRAKER NOT AVAILABLE": "Moonraker not available. Printer offline?"
+}

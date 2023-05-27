@@ -1,0 +1,40 @@
+/*
+ *
+ * MMM-moonraker
+ *
+ * 
+ * MIT Licensed.
+ *
+ * Custom here your css module
+ *
+ */
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.row-center {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumb {
+    margin-bottom: 5px;
+}
+
+.column {
+    min-width: 0;
+    flex-basis: 40%;
+}
+
+.column-text {
+    min-width: 0;
+    flex-basis: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

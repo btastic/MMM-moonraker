@@ -1,0 +1,36 @@
+{
+  "name": "MMM-moonraker",
+  "version": "1.0.0",
+  "description": "A moonraker plugin for MagicMirror².",
+  "main": "MMM-moonraker.js",
+  "author": "Ben Konsemüller",
+  "license": "MIT",
+  "repository": {
+		"type": "git",
+		"url": "git+https://github.com/btastic/MMM-moonraker"
+	},
+  "keywords": [
+		"magic mirror",
+		"smart mirror",
+		"moonraker",
+    "klipper",
+    "mainsail",
+    "fluidd",
+		"module"
+	],
+	"contributors": "https://github.com/btastic/MMM-moonraker/graphs/contributors",
+  "bugs": {
+		"url": "https://github.com/btastic/MMM-moonraker/issues"
+	},
+	"homepage": "https://github.com/btastic/MMM-moonraker#readme",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-eslint": "latest",
+    "grunt-jsonlint": "latest",
+    "grunt-markdownlint": "^1.0.13",
+    "grunt-stylelint": "latest",
+    "grunt-yamllint": "latest",
+    "stylelint-config-standard": "latest",
+    "time-grunt": "latest"
+  }
+}
