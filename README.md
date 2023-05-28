@@ -46,7 +46,7 @@ var config = {
 |--------------------- |-----------
 | `endpoint`           | *Required* <br>Endpoint of the Moonraker API. Usually, this is the same as your Fluidd or Mainsail installation. For example: http://192.168.0.75<br><br>**Type:** `string`(url) 
 | `updateInterval`     | *Optional* <br>The time interval between UI updates.<br><br>**Type:** `int`(milliseconds)<br>**Default:** 60000 milliseconds (60 seconds)
-| `showThumbnail`      | *Optional* <br>Shows the largest thumbnail embedded in your gcode. Check the Mainsail documentation on how to add thumbnails with your slicer. [How to config your slicer for thumbnails](https://docs.mainsail.xyz/overview/features/thumbnails#how-to-config-your-slicer-for-thumbnails)<br><br>**Type:** `bool` <br>**Default:** true
+| `showThumbnail`      | *Optional* <br>Shows the largest thumbnail embedded in your gcode. Check the Mainsail documentation on how to add thumbnails with your slicer. [How to config your slicer for thumbnails](https://docs.mainsail.xyz/overview/features/thumbnails#how-to-config-your-slicer-for-thumbnails). Make sure to modify your config.js `address` to be something else than `0.0.0.0` or CORS will prevent you from showing the thumbnail. I use `localhost` and it is working fine.<br><br>**Type:** `bool` <br>**Default:** true
 | `thumbnailSize`      | *Optional* <br>Changes with thumbnails size (width). Enter a integer value for an absolute value, or a relative size with % (e.g. "50%").<br><br>**Type:** `int\|string` <br>**Default:** 150
 | `hideDataOnStandby`  | *Optional* <br>Hides printer info when the printer is on standby.<br><br>**Type:** `bool` <br>**Default:** true
 
