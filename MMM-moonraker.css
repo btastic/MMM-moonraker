@@ -8,13 +8,13 @@
  * Custom here your css module
  *
  */
-.row {
+.MMM-moonraker-row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.row-center {
+.MMM-moonraker-row-center {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -22,16 +22,16 @@
     justify-content: center;
 }
 
-.thumb {
+.MMM-moonraker-thumb {
     margin-bottom: 5px;
 }
 
-.column {
+.MMM-moonraker-column {
     min-width: 0;
     flex-basis: 40%;
 }
 
-.column-text {
+.MMM-moonraker-column-text {
     min-width: 0;
     flex-basis: 60%;
     text-overflow: ellipsis;
