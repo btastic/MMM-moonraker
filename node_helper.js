@@ -62,6 +62,10 @@ module.exports = NodeHelper.create({
   },
 
   async fetchMetadata(printer_status) {
+    if (!printer_status.print_stats.filename) {
+      return;
+    }
+
     const endpoint = this.config.endpoint + "/server/files/metadata?filename=" + printer_status.print_stats.filename;
 
     try {
