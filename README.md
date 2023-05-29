@@ -40,6 +40,10 @@ var config = {
 }
 ```
 
+## Layer count
+To see the current layer and the total layer you have to setup your slicer to emit some G-code which will be interpreted by moonraker.
+Check the Mainsail documentation on how to add layer information with your slicer: [Layer Count](https://docs.mainsail.xyz/overview/slicer/prusaslicer#layer-count)
+
 ## Configuration options
 
 | Option               | Description
