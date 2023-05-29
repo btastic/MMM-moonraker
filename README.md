@@ -28,6 +28,7 @@ var config = {
     modules: [
         {
             module: 'MMM-moonraker',
+            position: 'top_right',
             config: {
                 endpoint: "",
                 updateInterval: 60000,
