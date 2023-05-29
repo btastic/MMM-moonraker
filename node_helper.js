@@ -81,6 +81,10 @@ module.exports = NodeHelper.create({
       // sort thumbnails by width so the first one is the larger one
       json.result.thumbnails.sort(function (a, b) { return b.width - a.width });
 
+      if (!json.result.thumbnails || json.result.thumbnails.length === 0) {
+        json.result.thumbnails = [{ relative_path: "./modules/MMM-moonraker/img/no_thumbnail.png" }];
+      }
+
       return json.result;
     } catch (error) {
       Log.log(`${this.name} received an error: ${error}`);
