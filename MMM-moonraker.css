@@ -44,3 +44,35 @@
     overflow: hidden;
     white-space: nowrap;
 }
+
+.MMM-moonraker {
+    --progress-color: green;
+    --progress-background-color: gray;
+    --border-radius: 10px;
+}
+
+/* background: */
+.MMM-moonraker progress::-webkit-progress-bar {
+    background-color: var(--progress-background-color);
+    border-radius: var(--border-radius);
+}
+
+.MMM-moonraker progress {
+    background-color: var(--progress-background-color);
+    border-radius: var(--border-radius);
+}
+
+/* value: */
+.MMM-moonraker progress::-webkit-progress-value {
+    background-color: var(--progress-color) !important;
+    border-radius: var(--border-radius);
+}
+
+.MMM-moonraker progress::-moz-progress-bar {
+    background-color: var(--progress-color) !important;
+    border-radius: var(--border-radius);
+}
+
+.MMM-moonraker progress {
+    color: var(--progress-color);
+}

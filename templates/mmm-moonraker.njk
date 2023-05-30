@@ -47,7 +47,8 @@
                 </div>
                 <div class="column-text xsmall align-left">
                     {% if data.virtual_sdcard.progress > 0 %}
-                        {{ (data.virtual_sdcard.progress*100) | round | int }}%
+                        <progress max="100" value="{{ (data.virtual_sdcard.progress*100) | round | int }}"></progress>
+                        <span>{{ (data.virtual_sdcard.progress*100) | round | int }}%</span>
                     {% else %}
                         -
                     {% endif %}
