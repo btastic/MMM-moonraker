@@ -30,15 +30,18 @@ module.exports = NodeHelper.create({
     const self = this;
 
     const printer_status = await this.fetchPrinterStatus();
+    let metadata = null;
 
     if (this.currentFile !== printer_status.print_stats.filename) {
       this.currentFile = printer_status.print_stats.filename;
-      this.metadata = await this.fetchMetadata(printer_status);
+      metadata = await this.fetchMetadata(printer_status);
     }
 
-    const eta = await this.calculateEta(printer_status, this.metadata);
+    const thumbnail = metadata?.thumbnails[0].relative_path;
 
-    this.sendSocketNotification("PRINTER_STATUS", { printer_status, metadata: this.metadata, eta });
+    const eta = await this.calculateEta(printer_status, metadata);
+
+    this.sendSocketNotification("PRINTER_STATUS", { printer_status, metadata, eta, thumbnail });
 
     this.fetchTimerId = setTimeout(async function () {
       await self.fetchData();
@@ -73,14 +76,16 @@ module.exports = NodeHelper.create({
       const json = await response.json();
 
       // join up the final thumbnail url for convenience
-      for (let index = 0; index < json.result.thumbnails.length; index++) {
-        const element = json.result.thumbnails[index];
-        element.relative_path = this.config.endpoint + "/server/files/gcodes/" + element.relative_path;
+      if (json.result.thumbnails) {
+        for (let index = 0; index < json.result.thumbnails.length; index++) {
+          const element = json.result.thumbnails[index];
+          element.relative_path = this.config.endpoint + "/server/files/gcodes/" + element.relative_path;
+        }
+
+        // sort thumbnails by width so the first one is the larger one
+        json.result.thumbnails.sort(function (a, b) { return b.width - a.width });
       }
-
-      // sort thumbnails by width so the first one is the larger one
-      json.result.thumbnails.sort(function (a, b) { return b.width - a.width });
-
+      
       if (!json.result.thumbnails || json.result.thumbnails.length === 0) {
         json.result.thumbnails = [{ relative_path: "./modules/MMM-moonraker/img/no_thumbnail.png" }];
       }

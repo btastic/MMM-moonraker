@@ -58,7 +58,7 @@ Module.register("MMM-moonraker", {
       config: this.config,
       data: this.loading ? null : this.displayData.printer_status,
       eta: this.loading ? null : this.displayData.eta,
-      thumbnails: this.loading ? [] : this.displayData.metadata?.thumbnails,
+      thumbnail: this.loading ? null : this.displayData.thumbnail,
       available: this.available,
     };
 
