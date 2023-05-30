@@ -45,6 +45,20 @@ var config = {
 To see the current layer and the total layer you have to setup your slicer to emit some G-code which will be interpreted by moonraker.
 Check the Mainsail documentation on how to add layer information with your slicer: [Layer Count](https://docs.mainsail.xyz/overview/slicer/prusaslicer#layer-count)
 
+## Customization
+To change the color of the progress bar, you can override the default colors (green on gray) with css in your custom.css file.
+
+You can also change the border radius of the progress bar, if you don't like rounded corners.
+
+For example:
+```css
+.MMM-moonraker {
+  --progress-color: crimson;
+  --progress-background-color: gray;
+  --border-radius: 0px;
+}
+```
+
 ## Configuration options
 
 | Option               | Description
