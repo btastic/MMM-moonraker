@@ -37,11 +37,17 @@
     flex-basis: 40%;
 }
 
-.MMM-moonraker .column-text {
+.MMM-moonraker .column-text-of {
     min-width: 0;
     flex-basis: 60%;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
+}
+
+.MMM-moonraker .column-text {
+    min-width: 0;
+    flex-basis: 60%;
     white-space: nowrap;
 }
 
