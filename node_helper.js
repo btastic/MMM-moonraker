@@ -32,6 +32,10 @@ module.exports = NodeHelper.create({
     const printer_status = await this.fetchPrinterStatus();
     let metadata = null;
 
+    if (!printer_status) {
+      return;
+    }
+
     if (this.currentFile !== printer_status.print_stats.filename) {
       this.currentFile = printer_status.print_stats.filename;
       metadata = await this.fetchMetadata(printer_status);
