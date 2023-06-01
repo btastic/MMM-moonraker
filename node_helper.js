@@ -30,7 +30,6 @@ module.exports = NodeHelper.create({
     const self = this;
 
     const printer_status = await this.fetchPrinterStatus();
-    let metadata = null;
 
     if (!printer_status) {
       return;
@@ -38,14 +37,14 @@ module.exports = NodeHelper.create({
 
     if (this.currentFile !== printer_status.print_stats.filename) {
       this.currentFile = printer_status.print_stats.filename;
-      metadata = await this.fetchMetadata(printer_status);
+      this.metadata = await this.fetchMetadata(printer_status);
     }
 
-    const thumbnail = metadata?.thumbnails[0].relative_path;
+    const thumbnail = this.metadata?.thumbnails[0].relative_path;
 
-    const eta = await this.calculateEta(printer_status, metadata);
+    const eta = await this.calculateEta(printer_status, this.metadata);
 
-    this.sendSocketNotification("PRINTER_STATUS", { printer_status, metadata, eta, thumbnail });
+    this.sendSocketNotification("PRINTER_STATUS", { printer_status, metadata: this.metadata, eta, thumbnail });
 
     this.fetchTimerId = setTimeout(async function () {
       await self.fetchData();
