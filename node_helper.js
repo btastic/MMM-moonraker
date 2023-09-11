@@ -31,18 +31,24 @@ module.exports = NodeHelper.create({
 
     const printer_status = await this.fetchPrinterStatus();
 
-    if (printer_status) {
-      if (this.currentFile !== printer_status.print_stats.filename) {
-        this.currentFile = printer_status.print_stats.filename;
-        this.metadata = await this.fetchMetadata(printer_status);
-      }
-  
-      const thumbnail = this.metadata?.thumbnails[0].relative_path;
-  
-      const eta = await this.calculateEta(printer_status, this.metadata);
-  
-      this.sendSocketNotification("PRINTER_STATUS", { printer_status, metadata: this.metadata, eta, thumbnail });
+    if (!printer_status) {
+      this.fetchTimerId = setTimeout(async function () {
+        await self.fetchData();
+      }, this.config.updateInterval);
+
+      return;
     }
+
+    if (this.currentFile !== printer_status.print_stats.filename) {
+      this.currentFile = printer_status.print_stats.filename;
+      this.metadata = await this.fetchMetadata(printer_status);
+    }
+
+    const thumbnail = this.metadata?.thumbnails[0].relative_path;
+
+    const eta = await this.calculateEta(printer_status, this.metadata);
+
+    this.sendSocketNotification("PRINTER_STATUS", { printer_status, metadata: this.metadata, eta, thumbnail });
 
     this.fetchTimerId = setTimeout(async function () {
       await self.fetchData();
